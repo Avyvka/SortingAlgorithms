@@ -19,6 +19,7 @@ public:
         while (current != NULL)
         {
             prevent = current;
+
             if (current->value > node->value)
             {
                 current = current->left;
