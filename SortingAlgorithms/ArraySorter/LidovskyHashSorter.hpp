@@ -29,8 +29,8 @@ private:
     }
 
 public:
-	void sort(Array<T>& array) override
-	{
+    void sort(Array<T>& array) override
+    {
         const std::pair<T, T> pair = minmax(array);
         const T min = pair.first;
         const T max = pair.second;
@@ -51,10 +51,11 @@ public:
         std::size_t zeroCounter = 0;
         std::size_t negativeCount = 0;
 
+
         for (std::size_t index = 0; index < array.size(); index++)
-        {   
+        {
             // Так как по умолчанию NULL = 0 = "пустое место" в массиве,
-            // то смысла записывать 0 в промежуточный массив нет
+            // то нет смысла записывать 0 в промежуточный массив
             if (array[index] == 0)
             {
                 zeroCounter++;
@@ -71,36 +72,44 @@ public:
             // Высчитывание hash-index'а 
             std::size_t hashIndex = (array[index] - min) * (aux.size() - 1) / (max - min);
 
-            std::cout << array[index] << " = " << hashIndex << std::endl;
-
-            // Если образовалась коллизия, то сдвинуть элементы массива
+            // Если образовалась коллизия
             if (aux[hashIndex] != NULL)
             {
-                // Смещение сдвига: влево(-) / вправо(+)
-                long long offset = 0;
+                int step = 0;
+                int sign = 0;
 
-                // Высчитывание смещения влево
-                while (hashIndex + offset > 0 && aux[hashIndex + offset] > array[index])
+                if (aux[hashIndex] > array[index])
                 {
-                    offset--;
-                }
-
-                // Ecли сдвинуть элементы влево не получится
-                if (offset == 0 || hashIndex + offset == 0)
-                {
-                    // Высчитать смещение вправо
-                    while (hashIndex + offset < aux.size() && aux[hashIndex + offset] != NULL)
+                    while (hashIndex > 0 && aux[hashIndex - 1] > array[index])
                     {
-                        offset++;
+                        hashIndex--;
                     }
-
-                    // Сдвиг элементов массива вправо на 1
-                    aux.shift(hashIndex, hashIndex + offset - 1, 1);
+                    sign = -1;
                 }
                 else
-                {   
-                    // Сдвиг элементов массива влево на 1
-                    aux.shift(hashIndex + offset + 1, hashIndex, -1);
+                {
+                    while (hashIndex < aux.size() - 1 && aux[hashIndex + 1] < array[index] && aux[hashIndex + 1] != NULL)
+                    {
+                        hashIndex++;
+                    }
+                    sign = 1;
+                }
+
+                while (step + hashIndex < 0 || step + hashIndex >= aux.size() || aux[step + hashIndex] != NULL)
+                {
+                    step = (step > 0) ? -step : 1 - step;
+                }
+
+                std::size_t resultIndex = hashIndex + step;
+
+                step = (step > 0) ? 1 : -1;
+
+                hashIndex += (std::size_t)div((sign + step), 2).quot;
+
+                while (resultIndex != hashIndex)
+                {
+                    aux[resultIndex] = aux[resultIndex - step];
+                    resultIndex = resultIndex - step;
                 }
             }
 
@@ -110,7 +119,7 @@ public:
         std::size_t index = 0;
         for (std::size_t auxIndex = 0; auxIndex < aux.size(); auxIndex++)
         {
-            while (index > negativeCount && zeroCounter > 0)
+            while (index >= negativeCount && zeroCounter > 0)
             {
                 array[index++] = 0;
                 zeroCounter--;
@@ -121,8 +130,6 @@ public:
                 array[index++] = aux[auxIndex];
             }
         }
-
-        aux.print();
 	}
 };
 
