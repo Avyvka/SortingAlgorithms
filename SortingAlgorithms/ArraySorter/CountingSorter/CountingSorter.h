@@ -7,6 +7,7 @@ class CountingSorter : public AbstractArraySorter<T>
 {
 private:
 	std::pair<T, T> minmax(Array<T>& array);
+
 public:
 	void sort(Array<T>& array) override;
 };
