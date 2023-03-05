@@ -3,40 +3,45 @@
 template <class T>
 class Node
 {
+private:
+    Node* _left = NULL;
+    Node* _right = NULL;
+
+protected:
+    virtual void left(Node<T>* node) final
+    {
+        _left = node;
+    }
+
+    virtual void right(Node<T>* node) final
+    {
+        _right = node;
+    }
+
+    virtual void setLeft(Node<T>* root, Node<T>* node) final
+    {
+        root->left(node);
+    }
+
+    virtual void setRight(Node<T>* root, Node<T>* node) final
+    {
+        root->right(node);
+    }
+
 public:
     const T value;
 
-    Node* left = NULL;
-    Node* right = NULL;
-
     Node(T _value) : value(_value) {};
 
-    void insert(Node<T>* node)
+    virtual void insert(Node<T>* node) = 0;
+
+    virtual Node* left() const final
     {
-        Node<T>* current = this;
-        Node<T>* prevent = NULL;
+        return _left;
+    }
 
-        while (current != NULL)
-        {
-            prevent = current;
-
-            if (current->value > node->value)
-            {
-                current = current->left;
-            }
-            else
-            {
-                current = current->right;
-            }
-        }
-
-        if (prevent->value > node->value)
-        {
-            prevent->left = node;
-        }
-        else
-        {
-            prevent->right = node;
-        }
+    virtual Node* right() const final
+    {
+        return _right;
     }
 };
