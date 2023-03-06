@@ -80,24 +80,6 @@ public:
 		swap(_pointer[arg0], _pointer[arg1]);
 	}
 
-	void shift(std::size_t start, std::size_t end, long long offset)
-	{
-		if (offset > 0 && end + offset <= _size)
-		{
-			for (std::size_t index = end; index + 1 > start; index--)
-			{
-				swap(_pointer[index], _pointer[index + offset]);
-			}
-		}
-		else if (offset < 0 && (long long)start + offset >= 0)
-		{
-			for (std::size_t index = start; index <= end; index++)
-			{
-				swap(_pointer[index], _pointer[index + offset]);
-			}
-		}
-	}
-
 	void print()
 	{
 		const std::size_t length = std::to_string(_size - 1).length();
