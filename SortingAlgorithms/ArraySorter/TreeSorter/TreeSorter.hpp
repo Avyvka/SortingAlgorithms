@@ -6,6 +6,11 @@ template <class T>
 class TreeSorter : public AbstractArraySorter<T>
 {
 public:
+    std::string name()
+    {
+        return "Tree";
+    }
+
     void sort(Array<T>& array) override
     {
         SortedNode<T>* root = new SortedNode<T>(array.first());

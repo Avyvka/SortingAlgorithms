@@ -9,6 +9,7 @@ private:
 	std::pair<T, T> minmax(Array<T>& array);
 
 public:
+	std::string name() override;
 	void sort(Array<T>& array) override;
 };
 

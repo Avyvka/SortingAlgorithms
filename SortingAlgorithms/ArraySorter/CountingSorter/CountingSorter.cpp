@@ -22,6 +22,12 @@ std::pair<T, T> CountingSorter<T>::minmax(Array<T>& array)
 }
 
 template <class T>
+std::string CountingSorter<T>::name()
+{
+    return "Counting";
+}
+
+template <class T>
 void CountingSorter<T>::sort(Array<T>& array)
 {
     const std::pair<T, T> pair = minmax(array);

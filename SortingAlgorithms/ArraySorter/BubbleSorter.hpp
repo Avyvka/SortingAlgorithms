@@ -6,6 +6,11 @@ template <class T>
 class BubbleSorter : public AbstractArraySorter<T>
 {
 public:
+    std::string name()
+    {
+        return "Bubble";
+    }
+
 	void sort(Array<T>& array) override
 	{
         for (std::size_t step = 0; step < array.size() - 1; step++)

@@ -29,6 +29,11 @@ private:
     }
 
 public:
+    std::string name()
+    {
+        return "LidovskyHash";
+    }
+
     void sort(Array<T>& array) override
     {
         const std::pair<T, T> pair = minmax(array);
