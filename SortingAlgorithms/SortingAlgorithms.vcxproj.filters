@@ -18,7 +18,7 @@
     <ClCompile Include="SortingAlgorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArraySorter\HashSorter\HashSorter.cpp">
+    <ClCompile Include="ArraySorter\CountingSorter\CountingSorter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,7 +38,22 @@
     <ClInclude Include="ArraySorter\BubbleSorter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArraySorter\HashSorter\HashSorter.h">
+    <ClInclude Include="ArraySorter\CountingSorter\CountingSorter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySorter\TreeSorter\TreeSorter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySorter\TreeSorter\Node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySorter\LidovskyHashSorter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySorter\QuickSorter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySorter\TreeSorter\SortedNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

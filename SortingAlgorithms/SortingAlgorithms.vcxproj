@@ -128,16 +128,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ArraySorter\HashSorter\HashSorter.cpp" />
+    <ClCompile Include="ArraySorter\CountingSorter\CountingSorter.cpp" />
     <ClCompile Include="SortingAlgorithms.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArraySorter\AbstractArraySorter.h" />
+    <ClInclude Include="ArraySorter\QuickSorter.hpp" />
+    <ClInclude Include="ArraySorter\TreeSorter\SortedNode.hpp" />
     <ClInclude Include="Array\Array.hpp" />
     <ClInclude Include="ArrayBuilder\AbstractArrayBuilder.h" />
     <ClInclude Include="ArrayBuilder\NumberArrayBuilder.hpp" />
     <ClInclude Include="ArraySorter\BubbleSorter.hpp" />
-    <ClInclude Include="ArraySorter\HashSorter\HashSorter.h" />
+    <ClInclude Include="ArraySorter\CountingSorter\CountingSorter.h" />
+    <ClInclude Include="ArraySorter\TreeSorter\TreeSorter.hpp" />
+    <ClInclude Include="ArraySorter\TreeSorter\Node.hpp" />
+    <ClInclude Include="ArraySorter\LidovskyHashSorter.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
