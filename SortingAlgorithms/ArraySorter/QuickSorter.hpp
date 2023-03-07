@@ -1,5 +1,4 @@
 #pragma once
-#pragma comment(linker, "/STACK:4294967295")
 #include "AbstractArraySorter.h"
 #include "../Array/Array.hpp"
 
