@@ -1,6 +1,7 @@
 #pragma once
 #include "AbstractArraySorter.h"
 #include "../Array/Array.hpp"
+#include <stack>
 
 
 template <class T>
@@ -27,13 +28,31 @@ private:
     }
 
     void sort(Array<T>& array, std::size_t low, std::size_t high)
-    {   
-        if (low < high + 1) 
-        {
+    {
+        std::stack<std::size_t> stack;
+
+        stack.push(low);
+        stack.push(high);
+
+        while (!stack.empty()) {
+
+            high = stack.top();
+            stack.pop();
+
+            low = stack.top();
+            stack.pop();
+
             std::size_t pivotIndex = partition(array, low, high, array[high]);
 
-            sort(array, low, pivotIndex - 1);
-            sort(array, pivotIndex + 1, high);
+            if (pivotIndex > low + 1) {
+                stack.push(low);
+                stack.push(pivotIndex - 1);
+            }
+
+            if (pivotIndex + 1 < high) {
+                stack.push(pivotIndex + 1);
+                stack.push(high);
+            }
         }
     }
 

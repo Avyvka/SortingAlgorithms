@@ -66,7 +66,7 @@ void test()
         std::make_shared<BubbleSorter<T>>(),
         std::make_shared<TreeSorter<T>>(),
         std::make_shared<CountingSorter<T>>(),
-        //std::make_shared<QuickSorter<T>>(),
+        std::make_shared<QuickSorter<T>>(),
         std::make_shared<LidovskyHashSorter<T>>()
     };
 
