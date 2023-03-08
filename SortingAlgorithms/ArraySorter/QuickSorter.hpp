@@ -3,7 +3,6 @@
 #include "../Array/Array.hpp"
 #include <stack>
 
-
 template <class T>
 class QuickSorter : public AbstractArraySorter<T>
 {
@@ -19,7 +18,8 @@ private:
 
         for (std::size_t index = low; index <= high; index++)
         {
-            if (array[index] <= pivot) {
+            if (array[index] <= pivot)
+            {
                 array.swap(pIndex++, index);
             }
         }
@@ -34,7 +34,8 @@ private:
         stack.push(low);
         stack.push(high);
 
-        while (!stack.empty()) {
+        while (!stack.empty())
+        {
 
             high = stack.top();
             stack.pop();
@@ -44,12 +45,14 @@ private:
 
             std::size_t pivotIndex = partition(array, low, high, array[high]);
 
-            if (pivotIndex > low + 1) {
+            if (pivotIndex > low + 1)
+            {
                 stack.push(low);
                 stack.push(pivotIndex - 1);
             }
 
-            if (pivotIndex + 1 < high) {
+            if (pivotIndex + 1 < high)
+            {
                 stack.push(pivotIndex + 1);
                 stack.push(high);
             }

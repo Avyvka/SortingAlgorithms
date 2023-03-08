@@ -1,5 +1,4 @@
 #include "CountingSorter.h"
-#include <iostream>
 
 template <class T>
 std::pair<T, T> CountingSorter<T>::minmax(Array<T>& array)

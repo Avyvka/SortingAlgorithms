@@ -56,7 +56,6 @@ public:
         std::size_t zeroCounter = 0;
         std::size_t negativeCount = 0;
 
-
         for (std::size_t index = 0; index < array.size(); index++)
         {
             // “ак как по умолчанию NULL = 0 = "пустое место" в массиве,
