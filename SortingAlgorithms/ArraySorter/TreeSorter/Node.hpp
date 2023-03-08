@@ -1,4 +1,5 @@
 #pragma once
+#include <queue>
 
 template <class T>
 class Node
@@ -32,6 +33,34 @@ public:
     const T value;
 
     Node(T _value) : value(_value) {};
+
+    void destroy()
+    {
+        Node* root = this;
+        Node* front = NULL;
+
+        std::queue<Node*> queue;
+        queue.push(root);
+
+        while (!queue.empty())
+        {
+            front = queue.front();
+            queue.pop();
+
+            if (front->left() != NULL) {
+                queue.push(front->left());
+            }
+
+            if (front->right() != NULL) {
+                queue.push(front->right());
+            }
+
+            delete front;
+            front = NULL;
+        }
+
+        root = NULL;
+    }
 
     virtual void insert(Node<T>* node) = 0;
 

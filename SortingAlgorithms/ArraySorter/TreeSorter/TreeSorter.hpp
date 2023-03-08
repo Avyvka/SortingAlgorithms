@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "SortedNode.hpp"
 #include "../AbstractArraySorter.h"
 
@@ -21,6 +22,7 @@ public:
         }
 
         root->inorder(array);
+        root->destroy();
     }
 };
 
