@@ -80,7 +80,7 @@ public:
             if (aux[hashIndex] != NULL)
             {
                 int step = 0;
-                int sign = 0;
+                int sign = (aux[hashIndex] > array[index]) ? -1 : 1;
 
                 if (aux[hashIndex] > array[index])
                 {
@@ -88,7 +88,6 @@ public:
                     {
                         hashIndex--;
                     }
-                    sign = -1;
                 }
                 else
                 {
@@ -96,7 +95,6 @@ public:
                     {
                         hashIndex++;
                     }
-                    sign = 1;
                 }
 
                 while (step + hashIndex < 0 || step + hashIndex >= aux.size() || aux[step + hashIndex] != NULL)

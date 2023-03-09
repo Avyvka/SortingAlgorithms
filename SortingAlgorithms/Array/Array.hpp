@@ -2,7 +2,6 @@
 #include <memory>
 #include <string>
 #include <iostream>
-#include <initializer_list>
 
 template <class T>
 class Array
@@ -24,15 +23,6 @@ public:
 	{
 		_size = size;
 		_pointer = std::unique_ptr<T[]>(new T[_size]);
-	}
-
-	Array(std::initializer_list<T> elements) : Array(elements.size())
-	{
-		std::size_t index = 0;
-		for (T element : elements)
-		{
-			_pointer[index++] = element;
-		}
 	}
 
 	std::size_t size()
