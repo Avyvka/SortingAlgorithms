@@ -79,39 +79,54 @@ public:
             // Если образовалась коллизия
             if (aux[hashIndex] != NULL)
             {
-                int step = 0;
-                int sign = (aux[hashIndex] > array[index]) ? -1 : 1;
+                int direction = (aux[hashIndex] > array[index]) ? -1 : 1;
 
+                // Поиск "окна"
                 if (aux[hashIndex] > array[index])
                 {
+                    //                 <- hashIndex
+                    //                        v
+                    // [ .., 2, x, x, 5, {collision}, .. ]
+                    //             ^
                     while (hashIndex > 0 && aux[hashIndex - 1] > array[index])
                     {
                         hashIndex--;
                     }
                 }
                 else
-                {
+                {   
+                    //        hashIndex ->
+                    //            v
+                    // [ .., {collision}, 7, x, x, 12, .. ]
+                    //                       ^
                     while (hashIndex < aux.size() - 1 && aux[hashIndex + 1] < array[index] && aux[hashIndex + 1] != NULL)
                     {
                         hashIndex++;
                     }
                 }
 
-                while (step + hashIndex < 0 || step + hashIndex >= aux.size() || aux[step + hashIndex] != NULL)
+                int numberSteps = 0;
+
+                // Если "окно" найти не удалось, то начинается поиск ближайшего
+                // свободного места относительно неудачно найденного элемента
+                while (numberSteps + hashIndex < 0 || numberSteps + hashIndex >= aux.size() || aux[numberSteps + hashIndex] != NULL)
                 {
-                    step = (step > 0) ? -step : 1 - step;
+                    numberSteps = (numberSteps > 0) ? -numberSteps : 1 - numberSteps;
                 }
 
-                std::size_t resultIndex = hashIndex + step;
+                std::size_t resultIndex = hashIndex + numberSteps;
 
-                step = (step > 0) ? 1 : -1;
+                numberSteps = (numberSteps > 0) ? 1 : -1;
 
-                hashIndex += (std::size_t)div((sign + step), 2).quot;
+                // Сдвиг влево/вправо, если не удалось найти "окно" и
+                // направление не совпало с изначальным
+                hashIndex += (std::size_t)div((direction + numberSteps), 2).quot;
 
+                // Сдвиг элементов массива - создание "окна"
                 while (resultIndex != hashIndex)
                 {
-                    aux[resultIndex] = aux[resultIndex - step];
-                    resultIndex = resultIndex - step;
+                    aux[resultIndex] = aux[resultIndex - numberSteps];
+                    resultIndex = resultIndex - numberSteps;
                 }
             }
 

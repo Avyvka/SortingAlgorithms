@@ -36,7 +36,6 @@ private:
 
         while (!stack.empty())
         {
-
             high = stack.top();
             stack.pop();
 
