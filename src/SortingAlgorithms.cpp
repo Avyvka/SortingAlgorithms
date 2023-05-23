@@ -1,16 +1,16 @@
-#include <iostream>
-#include <chrono>
-#include <functional>
-#include <memory>
 #include <map>
-#include "ArrayBuilder/NumberArrayBuilder.hpp"
-#include "ArraySorter/CountingSorter/CountingSorter.h"
-#include "ArraySorter/BubbleSorter.hpp"
-#include "ArraySorter/TreeSorter/TreeSorter.hpp"
-#include "ArraySorter/LidovskyHashSorter.hpp"
-#include "ArraySorter/QuickSorter.hpp"
-#include "Array/Array.hpp"
+#include <chrono>
+#include <memory>
+#include <iostream>
+#include <functional>
 
+#include "Array/Array.hpp"
+#include "ArrayBuilder/NumberArrayBuilder.hpp"
+#include "ArraySorter/QuickSorter.hpp"
+#include "ArraySorter/BubbleSorter.hpp"
+#include "ArraySorter/LidovskyHashSorter.hpp"
+#include "ArraySorter/TreeSorter/TreeSorter.hpp"
+#include "ArraySorter/CountingSorter/CountingSorter.h"
 
 long long executeTime(std::function<void()> callback)
 {   
@@ -72,8 +72,8 @@ void test()
 
     NumberArrayBuilder<T> builder;
     SortedHashMap<std::string, std::function<Array<T>(std::size_t)>> types = {
-        {"Ordered", [&builder](std::size_t size) -> Array<T> {return builder.create(size); }},
-        {"Reverse", [&builder](std::size_t size) -> Array<T> {return builder.reverse(size); }},
+        {"Ordered", [&builder](std::size_t size) -> Array<T> { return builder.create(size); }},
+        {"Reverse", [&builder](std::size_t size) -> Array<T> { return builder.reverse(size); }},
         {"Random(1-12)", [&builder](std::size_t size) -> Array<T> { return builder.random(size, 1, 12); }},
         {"Random(1-7000)", [&builder](std::size_t size) -> Array<T> { return builder.random(size, 1, 70000); }}
     };

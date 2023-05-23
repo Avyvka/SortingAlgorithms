@@ -1,6 +1,6 @@
 #pragma once
-#include "../Array/Array.hpp"
 #include <string>
+#include "../Array/Array.hpp"
 
 template <class T>
 class AbstractArraySorter
