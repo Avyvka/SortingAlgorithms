@@ -16,13 +16,12 @@ long long executeTime(std::function<void()> callback)
 {   
     using std::chrono::microseconds;
     using std::chrono::high_resolution_clock;
-    using std::chrono::steady_clock;
 
-    steady_clock::time_point begin = high_resolution_clock::now();
+    high_resolution_clock::time_point begin = high_resolution_clock::now();
 
     callback();
 
-    steady_clock::time_point end = high_resolution_clock::now();
+    high_resolution_clock::time_point end = high_resolution_clock::now();
 
     return duration_cast<microseconds>(end - begin).count();
 }
