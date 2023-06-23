@@ -31,7 +31,7 @@ long long timeOfSort(Array<T> array, AbstractArraySorter<T>& sorter)
 {
     long long time = executeTime([&array, &sorter]() -> void { return sorter.sort(array); });
 
-    if (array.isSorted())
+    if (array.isSorted(std::less_equal<T>()))
     {
         return time;
     }

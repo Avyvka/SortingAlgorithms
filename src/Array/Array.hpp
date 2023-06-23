@@ -45,11 +45,12 @@ public:
 		return _pointer[index];
 	}
 
-	bool isSorted()
+	template<class Compare>
+	bool isSorted(Compare comp)
 	{
 		for (std::size_t index = 0; index < _size - 1; index++)
-		{
-			if (_pointer[index] > _pointer[index + 1])
+		{	
+			if (!comp(_pointer[index], _pointer[index + 1]))
 			{
 				return false;
 			}
