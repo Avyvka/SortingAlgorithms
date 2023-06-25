@@ -1,7 +1,7 @@
 #pragma once
 #include "AbstractArraySorter.h"
 #include <utility>
-#include <math.h>
+#include <cmath>
 
 template <class T>
 class LidovskyHashSorter : public AbstractArraySorter<T>
